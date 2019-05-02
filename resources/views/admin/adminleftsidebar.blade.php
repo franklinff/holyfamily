@@ -73,7 +73,7 @@
                               </a>
                           </li>
                           <li class="m-menu__item " aria-haspopup="true" >
-                              <a  href="../components/base/state.html" class="m-menu__link ">
+                              <a  href="{{ route('baptism.index')}}" class="m-menu__link ">
                                   <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                       <span></span>
                                   </i>
@@ -82,8 +82,10 @@
                                           </span>
                               </a>
                           </li>
+
+
                           <li class="m-menu__item " aria-haspopup="true" >
-                              <a  href="../components/base/scrollable.html" class="m-menu__link ">
+                              <a  href="{{ route('baptism.create')}}" class="m-menu__link ">
                                   <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                       <span></span>
                                   </i>

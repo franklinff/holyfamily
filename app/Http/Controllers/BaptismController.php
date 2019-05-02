@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Baptism;
+use Yajra\DataTables\DataTables;
 
 class BaptismController extends Controller
 {
@@ -12,10 +13,58 @@ class BaptismController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DataTables $datatables, Request $request)
     {
-       $x = Baptism::all();
-        dd($x->toArray());
+       $columns = [
+           ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr no','searchable'=>'false'],
+            ['data' => 'fullname','name' => 'fullname','title' => 'Name'],
+            ['data' => 'dob','name' => 'dob','title' => 'DOB'],
+            ['data' => 'gender','name' => 'gender','title' => 'Gender'],
+            ['data' => 'action','name' => 'action','title' => 'Action','searchable'=>'false']
+        ];
+        $getRequest = $request->all();
+
+        $baptism = Baptism::orderBy('id','desc')->get();
+
+        if ($datatables->getRequest()->ajax()) {
+            return $datatables->of($baptism)
+                ->editColumn('sr_no', function ($company_details) {
+                    static $i = 0;
+                    $i++;
+                    return $i;
+                })
+                ->editColumn('fullname', function ($baptism) {
+                    return $baptism->newborn_firstname.' '.$baptism->newborn_middlename.' '.$baptism->newborn_surname;
+                })
+                ->editColumn('dob', function ($baptism) {
+                    return $baptism->baptism_date;
+                })
+                ->editColumn('gender', function ($baptism) {
+                    return $baptism->gender   ;
+                })
+
+                ->editColumn('action', function ($baptism) {
+                    return '<div style="display: flex">
+                            <a href="'. route('baptism.show',$baptism->id).'" class="btn">Edit</a>
+                            <a href="'. route('baptism.edit', $baptism->id).'" class="btn">View</a>
+                            </div>';
+                })
+
+                ->rawColumns(['sr_no','dob','fullname','gender','action'])
+                ->make(true);
+        }
+
+        $html = $datatables->getHtmlBuilder()->columns($columns)->parameters($this->getParameters());
+        return view('admin.listbaptismdata', compact('html'));
+    }
+
+    public function getParameters() {
+        return [
+            'serverSide' => true,
+            'processing' => true,
+            'ordering'   =>'isSorted',
+            "pageLength" => 10
+        ];
     }
 
     /**
@@ -37,9 +86,8 @@ class BaptismController extends Controller
     public function store(Request $request)
     {
         $baptism = $request->toArray();
-        unset($baptism['_token']);
         Baptism::create($baptism);
-        return redirect()->route('baptism.create');
+        return redirect()->route('baptism.index');
     }
 
     /**
@@ -50,7 +98,7 @@ class BaptismController extends Controller
      */
     public function show($id)
     {
-        dd('show');
+        dd($id);
     }
 
     /**
@@ -61,7 +109,7 @@ class BaptismController extends Controller
      */
     public function edit($id)
     {
-        dd('edit');
+        dd($id);
     }
 
     /**

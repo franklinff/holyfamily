@@ -88,6 +88,10 @@
 <script src="{{ asset('metronic/assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
 <script src="{{ asset('metronic/assets/demo/default/base/scripts.bundle.js') }} " type="text/javascript"></script>
 <script src="{{ asset('js/jquery.validate.js') }} " type="text/javascript"></script>
+<script src="{{ asset('js/datatables.all.min.js') }} " type="text/javascript"></script>
+
+
+{{--<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" type="text/javascript"></script>--}}
 
 
 
