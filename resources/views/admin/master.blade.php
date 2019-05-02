@@ -1,0 +1,5 @@
+@include('admin.adminheader')
+@include('admin.adminleftsidebar')
+@yield('content')
+@include('admin.adminfooter')
+@yield('js')
