@@ -203,7 +203,7 @@
                                 <span class="m-menu__arrow"></span>
                                 <ul class="m-menu__subnav">
                                     <li class="m-menu__item " aria-haspopup="true" >
-                                        <a  href="../components/forms/widgets/bootstrap-datepicker.html" class="m-menu__link ">
+                                        <a  href="{{ route('carousngalry.index') }}" class="m-menu__link ">
                                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                                 <span></span>
                                             </i>
@@ -216,7 +216,7 @@
 
                                 <ul class="m-menu__subnav">
                                     <li class="m-menu__item " aria-haspopup="true" >
-                                        <a  href="../components/forms/widgets/bootstrap-datepicker.html" class="m-menu__link ">
+                                        <a  href="{{ route('carousngalry.create') }}" class="m-menu__link ">
                                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                                 <span></span>
                                             </i>
@@ -226,8 +226,6 @@
                                         </a>
                                     </li>
                                 </ul>
-
-
 
                             </div>
                         </li>

@@ -18,9 +18,6 @@ class CarouselnGalleryController extends Controller
      */
     public function index(DataTables $datatables, Request $request)
     {
-
-        //dd(storage_path());
-
         $carousel_imgs = CarouselnGallery::where('type','carousel')->get();
         $columns = [
             ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr No.','searchable' => false],
