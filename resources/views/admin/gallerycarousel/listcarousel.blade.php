@@ -4,6 +4,7 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/customstyle.css') }}">
     <div class="m-portlet__body">
+        <td><a href="{{ route('carousngalry.create') }}">Add image</a></td>
         {!! $html->table() !!}
     </div>
 @endsection

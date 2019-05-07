@@ -157,7 +157,6 @@
                         </div>
 
 
-
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                         <div class="m-form__actions m-form__actions">
@@ -168,7 +167,7 @@
                                     </button>
 
                                     <button class="btn btn-secondary">
-                                        <a href="">  Cancel </a>
+                                        <a href="{{ route('carousngalry.index') }}">  Cancel </a>
                                     </button>
                                 </div>
                             </div>
