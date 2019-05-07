@@ -214,7 +214,7 @@
                 <a  href="#" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-interface-7"></i>
                     <span class="m-menu__link-text">
-										Forms111
+										Gallery
 									</span>
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
@@ -234,7 +234,7 @@
                                     <span></span>
                                 </i>
                                 <span class="m-menu__link-text">
-													Form Controls
+													Carosel images
 												</span>
                                 <i class="m-menu__ver-arrow la la-angle-right"></i>
                             </a>
@@ -242,12 +242,12 @@
                                 <span class="m-menu__arrow"></span>
                                 <ul class="m-menu__subnav">
                                     <li class="m-menu__item " aria-haspopup="true" >
-                                        <a  href="../components/forms/controls/base.html" class="m-menu__link ">
+                                        <a  href="{{ route('carousngalry.create') }}" class="m-menu__link ">
                                             <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                                                 <span></span>
                                             </i>
                                             <span class="m-menu__link-text">
-																Base Inputs
+																Add slider images
 															</span>
                                         </a>
                                     </li>
