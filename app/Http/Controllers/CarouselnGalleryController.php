@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\CarouselnGallery;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 
 class CarouselnGalleryController extends Controller
@@ -43,10 +44,22 @@ class CarouselnGalleryController extends Controller
                     return '<img src= '.$x.'  alt="" width="150" height="120">';
                 })
                 ->editColumn('status', function ($carousel_imgs) {
-                    return $carousel_imgs->status;
+
+                    if($carousel_imgs->status == 1){
+
+                        return '<label class="switch">
+                            <input type="checkbox" id="status" class="status" onclick="return changeStatus('.$carousel_imgs->id.'.,0.)"   checked>
+                            <span class="slider round"></span>
+                            </label>';
+                    }elseif($carousel_imgs->status == 0){
+                        return '<label class="switch">
+                            <input type="checkbox" id="status" class="status" onclick="return changeStatus('.$carousel_imgs->id.'.,1.)">
+                            <span class="slider round"></span>
+                            </label>';
+                    }
                 })
                 ->editColumn('action', function ($carousel_imgs) {
-                    return $carousel_imgs->id;
+                    return'<a href="'.url('deletecoroselimg',$carousel_imgs->id).'">Delete</a>';
                 })
                 ->editColumn('uploaded_on', function ($carousel_imgs) {
                     return $carousel_imgs->created_at;
@@ -156,4 +169,30 @@ class CarouselnGalleryController extends Controller
     {
         //
     }
+
+
+    public function updateStatus(Request $request){
+        $id = $request->input('id');
+        $status = $request->input('status');
+
+        DB::table('carousngalry')
+            ->where("id",'=',$id)
+            ->limit(1)
+            ->update(['status'=> $status]);
+        //return back();
+        return response()->json(['success'=>'Data is successfully Updated']);
+    }
+
+    public function deleteCoroselimg($id){
+        //soft delete carosel img
+        $model = CarouselnGallery::find( $id );
+        $model->delete();
+
+
+        //updates the status to 0
+        $model->status = '0';
+        $model->save();
+        return redirect()->back();
+    }
+
 }
