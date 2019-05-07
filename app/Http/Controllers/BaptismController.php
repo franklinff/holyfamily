@@ -47,7 +47,7 @@ class BaptismController extends Controller
                 ->editColumn('action', function ($baptism) {
                     return '<div style="display: flex">
                             <a href="'. route('baptism.edit',$baptism->id).'" class="btn">Edit</a>
-                            <a href="'. route('baptism.show', $baptism->id).'" class="btn">View</a>
+                            <a href="'. route('baptism.show', $baptism->id).'" target="_blank" class="btn">View</a>
                             </div>';
                 })
 
@@ -100,17 +100,13 @@ class BaptismController extends Controller
     public function show($id)
     {
         $individual_data = Baptism::where('id',$id)->first();
-       // $data = Baptism::where('id',$id)->get();
-
-       // dd($individual_data->toArray());
 
         // Send data to the view using loadView function of PDF facade
         $pdf = PDF::loadView('admin.baptismpdfcertificate',compact('individual_data'));
         // If you want to store the generated pdf to the server then you can use the store function
         $pdf->save(storage_path().'_filename.pdf');
         // Finally, you can download the file using download function
-        return $pdf->download('baptismpdfcertificate.pdf');
-
+        return $pdf->download($individual_data->newborn_firstname.$individual_data->newborn_surname.date('H_i_s').'.pdf');
     }
 
     /**
