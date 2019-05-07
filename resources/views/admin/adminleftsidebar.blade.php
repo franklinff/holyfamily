@@ -221,7 +221,7 @@
                                                 <span></span>
                                             </i>
                                             <span class="m-menu__link-text">
-																Add gallery
+																Add gallery images
 															</span>
                                         </a>
                                     </li>

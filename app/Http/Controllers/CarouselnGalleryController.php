@@ -9,7 +9,6 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-
 class CarouselnGalleryController extends Controller
 {
     /**
@@ -39,7 +38,6 @@ class CarouselnGalleryController extends Controller
                     return $i;
                 })
                 ->editColumn('imagename', function ($carousel_imgs) {
-
                     $x = asset('storage/gallryncarousl/'.$carousel_imgs->imagename);
                     return '<img src= '.$x.'  alt="" width="150" height="120">';
                 })
@@ -102,7 +100,6 @@ class CarouselnGalleryController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'imagename'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -121,7 +118,6 @@ class CarouselnGalleryController extends Controller
 
         Storage::putFileAs('public/gallryncarousl', $request->file('imagename'), $filename);
 
-       // $request->imagename->storeAs('gallryncarousl',$filename);
         return redirect()->route('carousngalry.index');
     }
 
@@ -174,12 +170,7 @@ class CarouselnGalleryController extends Controller
     public function updateStatus(Request $request){
         $id = $request->input('id');
         $status = $request->input('status');
-
-        DB::table('carousngalry')
-            ->where("id",'=',$id)
-            ->limit(1)
-            ->update(['status'=> $status]);
-        //return back();
+        CarouselnGallery::find($id)->update(['status' => $status]);
         return response()->json(['success'=>'Data is successfully Updated']);
     }
 
@@ -187,7 +178,6 @@ class CarouselnGalleryController extends Controller
         //soft delete carosel img
         $model = CarouselnGallery::find( $id );
         $model->delete();
-
 
         //updates the status to 0
         $model->status = '0';
