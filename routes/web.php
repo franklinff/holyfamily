@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Route::resource('baptism', 'BaptismController');
 Route::resource('carousngalry', 'CarouselnGalleryController');
+Route::resource('contactus', 'ContactUsController');
+
 
 Route::get('create_gallery','CarouselnGalleryController@create_gallery')->name('create_gallery');
 Route::get('list_gallery','CarouselnGalleryController@list_gallery')->name('list_gallery');
