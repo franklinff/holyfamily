@@ -42,13 +42,13 @@ class CarouselnGalleryController extends Controller
 
                     if($carousel_imgs->status == 1){
 
-                        return '<label class="switch">
-                            <input type="checkbox" id="status" class="status" onclick="return changeStatus('.$carousel_imgs->id.'.,0.)"   checked>
+                        return '<label class="switch">                       
+                            <input type="checkbox" id="status" class="status" data-id='.$carousel_imgs->id.' data-value="0"  checked>
                             <span class="slider round"></span>
                             </label>';
                     }elseif($carousel_imgs->status == 0){
-                        return '<label class="switch">
-                            <input type="checkbox" id="status" class="status" onclick="return changeStatus('.$carousel_imgs->id.'.,1.)">
+                        return '<label class="switch">                         
+                            <input type="checkbox" id="status" class="status" data-id='.$carousel_imgs->id.' data-value="1" >
                             <span class="slider round"></span>
                             </label>';
                     }
@@ -168,7 +168,7 @@ class CarouselnGalleryController extends Controller
         $id = $request->input('id');
         $status = $request->input('status');
         CarouselnGallery::find($id)->update(['status' => $status]);
-        return response()->json(['success'=>'Data is successfully Updated']);
+        return response()->json(['updated_result'=>!($status)]);
     }
 
     public function deleteCoroselimg($id){

@@ -13,17 +13,23 @@
     {!! $html->scripts() !!}
 
     <script>
-    function changeStatus(x,y) {
-        var current_status = y;
-        var coroselimg_id = x;
-        $.ajax({
-            method: "GET",
-            url: "ajxupdateStatus",
-            data: {'id' : coroselimg_id,'status' : current_status},
-            success: function(result){
-                console.log(result);
-            }
+
+        $(document).unbind().on("change", ".status", function () {
+            var current_status = $(this).attr('data-value');
+            var coroselimg_id = $(this).attr('data-id');
+            var vm = $(this);
+
+            $.ajax({
+                method: "GET",
+                url: "ajxupdateStatus",
+                data: {'id' : coroselimg_id,'status' : current_status},
+                success: function(result){
+                    console.log(result);
+                    var updated_value = (current_status == 1) ? 0 : 1;
+                    vm.attr("data-value", updated_value);
+                }
+            })
         })
-    }
+
     </script>
 @endsection
