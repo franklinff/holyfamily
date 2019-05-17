@@ -462,22 +462,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																	</span>
                                                     </a>
                                                 </li>
-                                                <li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
-                                                    <a  href="../header/actions.html" class="m-menu__link ">
-                                                        <i class="m-menu__link-icon flaticon-folder"></i>
-                                                        <span class="m-menu__link-text">
-																		Folders
-																	</span>
-                                                    </a>
-                                                </li>
-                                                <li class="m-menu__item "  data-redirect="true" aria-haspopup="true">
-                                                    <a  href="../header/actions.html" class="m-menu__link ">
-                                                        <i class="m-menu__link-icon flaticon-cogwheel-2"></i>
-                                                        <span class="m-menu__link-text">
-																		System Settings
-																	</span>
-                                                    </a>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                     </li>
@@ -606,48 +591,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																						1 hr
 																					</span>
                                                                     </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge"></span>
-                                                                        <span class="m-list-timeline__text">
-																						System error -
-																						<a href="#" class="m-link">
-																							Check
-																						</a>
-																					</span>
-                                                                        <span class="m-list-timeline__time">
-																						2 hrs
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge"></span>
-                                                                        <span class="m-list-timeline__text">
-																						Production server down
-																					</span>
-                                                                        <span class="m-list-timeline__time">
-																						3 hrs
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge"></span>
-                                                                        <span class="m-list-timeline__text">
-																						Production server up
-																					</span>
-                                                                        <span class="m-list-timeline__time">
-																						5 hrs
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge"></span>
-                                                                        <span href="" class="m-list-timeline__text">
-																						New order received
-																						<span class="m-badge m-badge--danger m-badge--wide">
-																							urgent
-																						</span>
-																					</span>
-                                                                        <span class="m-list-timeline__time">
-																						7 hrs
-																					</span>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -674,43 +618,7 @@ License: You must have a valid license purchased only from themeforest(the above
 																						20 mins
 																					</span>
                                                                     </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge m-list-timeline__badge--state1-success"></span>
-                                                                        <a href="" class="m-list-timeline__text">
-                                                                            Production server up
-                                                                        </a>
-                                                                        <span class="m-list-timeline__time">
-																						5 hrs
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
-                                                                        <a href="" class="m-list-timeline__text">
-                                                                            New order received
-                                                                        </a>
-                                                                        <span class="m-list-timeline__time">
-																						7 hrs
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
-                                                                        <a href="" class="m-list-timeline__text">
-                                                                            System shutdown
-                                                                        </a>
-                                                                        <span class="m-list-timeline__time">
-																						11 mins
-																					</span>
-                                                                    </div>
-                                                                    <div class="m-list-timeline__item">
-                                                                        <span class="m-list-timeline__badge m-list-timeline__badge--state1-info"></span>
-                                                                        <a href="" class="m-list-timeline__text">
-                                                                            Production server down
-                                                                        </a>
-                                                                        <span class="m-list-timeline__time">
-																						3 hrs
-																					</span>
-                                                                    </div>
-                                                                </div>
+                                                                                                                                    </div>
                                                             </div>
                                                         </div>
                                                     </div>
