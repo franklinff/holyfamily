@@ -113,7 +113,7 @@
                             </h3>
 
                             <h3 class="m-portlet__head-text" >
-                                <a href="{{--{{ url() }}--}}">List images</a>
+                                <a href="{{ route('carousngalry.index') }}">List images</a>
                             </h3>
                         </div>
                     </div>

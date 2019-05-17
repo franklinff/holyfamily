@@ -115,7 +115,12 @@ class CarouselnGalleryController extends Controller
 
         Storage::putFileAs('public/gallryncarousl', $request->file('imagename'), $filename);
 
-        return redirect()->route('carousngalry.index');
+        if($request->type == 'carousel'){
+                return redirect()->route('carousngalry.index');
+        }elseif ($request->type == 'gallery'){
+                return redirect()->route('list_gallery');
+        }
+
     }
 
     /**
@@ -181,5 +186,52 @@ class CarouselnGalleryController extends Controller
         $model->save();
         return redirect()->back();
     }
+
+
+    public function create_gallery()
+    {
+        return view('admin.gallerycarousel.gallery_add');
+    }
+
+
+    public function list_gallery(DataTables $datatables, Request $request){
+
+        $gallery_imgs = CarouselnGallery::where('type','gallery')->get();
+
+        $columns = [
+            ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr No.','searchable' => false],
+            ['data' => 'imagename','name' => 'imagename','title' => 'Image','searchable' => false],
+            ['data' => 'action','name' => 'action','title' => 'Action','searchable' => false],
+            ['data' => 'uploaded_on','name' => 'uploaded_on','title' => 'Uploaded on']
+        ];
+
+        if ($datatables->getRequest()->ajax()) {
+            return $datatables->of($gallery_imgs)
+
+                ->editColumn('sr_no', function () {
+                    static $i = 0;
+                    $i++;
+                    return $i;
+                })
+                ->editColumn('imagename', function ($gallery_imgs) {
+                    $x = asset('storage/gallryncarousl/'.$gallery_imgs->imagename);
+                    return '<img src= '.$x.'  alt="" width="180" height="140">';
+                })
+                ->editColumn('action', function ($gallery_imgs) {
+                    return'<a href="'.url('deletecoroselimg',$gallery_imgs->id).'">Delete</a>';
+
+                })
+                ->editColumn('uploaded_on', function ($gallery_imgs) {
+
+                    return $gallery_imgs->created_at;
+                })
+                ->rawColumns(['sr_no','imagename','uploaded_on','action'])
+                ->make(true);
+        }
+        $html = $datatables->getHtmlBuilder()->columns($columns)->parameters($this->getParameters());
+
+        return view('admin.gallerycarousel.gallery_list',compact('html'));
+    }
+
 
 }

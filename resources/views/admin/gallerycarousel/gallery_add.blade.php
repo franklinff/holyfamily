@@ -113,7 +113,7 @@
                             </h3>
 
                             <h3 class="m-portlet__head-text" >
-                                <a href="{{--{{ url() }}--}}">List images</a>
+                                <a href="{{ route('list_gallery') }}">List gallery</a>
                             </h3>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                                 Please select image:
                             </label>
                             <div class="col-lg-7 col-md-7 col-sm-12">
-                                <input type="hidden" name="type" value="carousel">
+                                <input type="hidden" name="type" value="gallery">
                                 <input type="file" class="form-control m-input" name="imagename" id="imagename"/>
 
                                 {{--<input type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter post title">--}}
@@ -167,7 +167,7 @@
                                     </button>
 
                                     <button class="btn btn-secondary">
-                                        <a href="{{ route('carousngalry.index') }}">  Cancel </a>
+                                        <a href="{{ route('list_gallery') }}">Cancel</a>
                                     </button>
                                 </div>
                             </div>

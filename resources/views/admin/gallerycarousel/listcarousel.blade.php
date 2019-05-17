@@ -14,7 +14,7 @@
 
     <script>
 
-        $(document).unbind().on("change", ".status", function () {
+        $(document).unbind().on("change", "#status", function () {
             var current_status = $(this).attr('data-value');
             var coroselimg_id = $(this).attr('data-id');
             var vm = $(this);

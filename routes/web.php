@@ -20,8 +20,14 @@ Route::get('/', function () {
 Route::resource('baptism', 'BaptismController');
 Route::resource('carousngalry', 'CarouselnGalleryController');
 
+Route::get('create_gallery','CarouselnGalleryController@create_gallery')->name('create_gallery');
+Route::get('list_gallery','CarouselnGalleryController@list_gallery')->name('list_gallery');
+
+
 Route::get('ajxupdateStatus','CarouselnGalleryController@updateStatus')->name('ajxupdateStatus');
 Route::get('deletecoroselimg/{id}','CarouselnGalleryController@deleteCoroselimg')->name('deletecoroselimg');
+
+
 
 
 Auth::routes();
