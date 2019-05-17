@@ -35,6 +35,12 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'priest_name' => 'required',
+            'priest_number' => 'required',
+            'email_add' => 'required',
+            'church_address' => 'required'
+        ]);
 
         $input = array(
             'name_1' => isset($request->priest_name[0]) ? $request->priest_name[0] : null,

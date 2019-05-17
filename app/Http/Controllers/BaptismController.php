@@ -38,7 +38,7 @@ class BaptismController extends Controller
                     return $baptism->newborn_firstname.' '.$baptism->newborn_middlename.' '.$baptism->newborn_surname;
                 })
                 ->editColumn('dob', function ($baptism) {
-                    return $baptism->baptism_date;
+                    return $baptism->birth_date;
                 })
                 ->editColumn('gender', function ($baptism) {
                     return $baptism->gender   ;
