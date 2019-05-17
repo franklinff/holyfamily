@@ -20,7 +20,7 @@
             data-menu-scrollable="false" data-menu-dropdown-timeout="500"
     >
         <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
-            <li class="m-menu__item " aria-haspopup="true" >
+            {{--<li class="m-menu__item " aria-haspopup="true" >
                 <a  href="../index.html" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-line-graph"></i>
                     <span class="m-menu__link-title">
@@ -36,7 +36,7 @@
 										</span>
 									</span>
                 </a>
-            </li>
+            </li>--}}
             <li class="m-menu__section">
                 <h4 class="m-menu__section-text">
                     Components
@@ -908,18 +908,6 @@
                     </ul>
                 </div>
             </li>
-
-
-
-
-            <li class="m-menu__section">
-                <h4 class="m-menu__section-text">
-                    Contact us
-                </h4>
-                <i class="m-menu__section-icon flaticon-more-v3"></i>
-            </li>
-
-
 
 
         </ul>

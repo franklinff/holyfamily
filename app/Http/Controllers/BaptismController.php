@@ -17,31 +17,32 @@ class BaptismController extends Controller
     public function index(DataTables $datatables, Request $request)
     {
        $columns = [
-           ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr no','searchable'=>'false'],
-            ['data' => 'fullname','name' => 'fullname','title' => 'Name'],
-            ['data' => 'dob','name' => 'dob','title' => 'DOB'],
-            ['data' => 'gender','name' => 'gender','title' => 'Gender'],
-            ['data' => 'action','name' => 'action','title' => 'Action','searchable'=>'false']
+           ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr no','searchable'=>'false','class'=>'m-datatable__cell m-datatable__cell--sort' ],
+            ['data' => 'fullname','name' => 'fullname','title' => 'Name','class'=>'m-datatable__cell m-datatable__cell--sort'],
+            ['data' => 'dob','name' => 'dob','title' => 'DOB','class'=>'m-datatable__cell m-datatable__cell--sort'],
+            ['data' => 'gender','name' => 'gender','title' => 'Gender','class'=>'m-datatable__cell m-datatable__cell--sort'],
+            ['data' => 'action','name' => 'action','title' => 'Action','searchable'=>'false','class'=>'m-datatable__cell']
         ];
         $getRequest = $request->all();
 
         $baptism = Baptism::orderBy('id','desc')->get();
+        $baptism_count = count($baptism);
 
         if ($datatables->getRequest()->ajax()) {
             return $datatables->of($baptism)
                 ->editColumn('sr_no', function ($company_details) {
                     static $i = 0;
                     $i++;
-                    return $i;
+                    return '<span style="width: 133px;">'.$i.'</span>';
                 })
                 ->editColumn('fullname', function ($baptism) {
                     return $baptism->newborn_firstname.' '.$baptism->newborn_middlename.' '.$baptism->newborn_surname;
                 })
                 ->editColumn('dob', function ($baptism) {
-                    return $baptism->birth_date;
+                    return '<span style="width: 133px;">'.$baptism->birth_date.'</span>';
                 })
                 ->editColumn('gender', function ($baptism) {
-                    return $baptism->gender   ;
+                    return '<span style="width: 133px;">'.$baptism->gender.'</span>';
                 })
 
                 ->editColumn('action', function ($baptism) {
@@ -56,7 +57,7 @@ class BaptismController extends Controller
         }
 
         $html = $datatables->getHtmlBuilder()->columns($columns)->parameters($this->getParameters());
-        return view('admin.listbaptismdata', compact('html'));
+        return view('admin.listbaptismdata', compact('html','baptism_count'));
     }
 
     public function getParameters() {
