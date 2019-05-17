@@ -53,17 +53,17 @@
                                             <label for="example-text-input" class="col-2 col-form-label">
                                                 Priest name
                                             </label>
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <input class="form-control m-input" type="text"  id="priest_name" name="priest_name[]" placeholder="Name">
                                             </div>
 
                                             <label for="example-text-input" class="col-2 col-form-label">
                                                 Phone number
                                             </label>
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <input class="form-control m-input" type="text" id="priest_number" name="priest_number[]" placeholder="Number">
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-4">
                                                 <a href="javascript:void(0);" id="priest_name_number">Add name & number</a>
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
             $("#priest_name_number").click(function(){
                 if(countnumber<4){
                     $('#priest_contactdiv').append('<div class="row contactnamenumber'+ cnt +'" style="margin-top: 2%">\n' +
-                        '                                       <div class="col-lg-3">\n' +
+                        '                                       <div class="col-4">\n' +
                         '                                           <div class="form-group">\n' +
                         '                                               <label for="priest_name" class="form-control-label">\n' +
                         '                                                   <strong>Priest name</strong>\n' +
@@ -131,7 +131,7 @@
                         '                                               <input type="text" name="priest_name[]" class="form-control m-input" >\n' +
                         '                                           </div>\n' +
                         '                                       </div>\n' +
-                        '                                       <div class="col-lg-3">\n' +
+                        '                                       <div class="col-4">\n' +
                         '                                           <div class="form-group">\n' +
                         '                                               <label for="priest_number" class="form-control-label">\n' +
                         '                                                   <strong>Phone number</strong>\n' +
@@ -139,7 +139,7 @@
                         '                                               <input type="text" name="priest_number[]" class="form-control m-input">\n' +
                         '                                           </div>\n' +
                         '                                       </div>\n' +
-                        '                                       <div class="col-lg-3">\n' +
+                        '                                       <div class="col-lg-4">\n' +
                         '                                           <a href="javascript:void(0);" id="priest_name_number" name="priest_name_number" onClick="removeField('+cnt+','+countnumber +');" class="btn btn-danger" style="color: #FFFFFF;">Remove</a>\n'+
                         '                                       <div>\n' +
                         '                           </div>\n'
