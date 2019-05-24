@@ -56,7 +56,7 @@
                       <span class="m-menu__arrow"></span>
                       <ul class="m-menu__subnav">
                           <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true" >
-                              <a  href="#" class="m-menu__link ">
+                              <a  href="{{ route('baptism.index')}}" class="m-menu__link ">
                                           <span class="m-menu__link-text">
                                               Base
                                           </span>
@@ -203,6 +203,18 @@
             </li>
 
 
+
+            <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+                <a  href="{{ route('churchbuidingfund.create') }}" class="m-menu__link m-menu__toggle">
+                    <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                        <span></span>
+                    </i>
+                    <span class="m-menu__link-text">
+													Church building fund
+												</span>
+                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+                </a>
+            </li>
 
             {{-- <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
                  <a  href="#" class="m-menu__link m-menu__toggle">

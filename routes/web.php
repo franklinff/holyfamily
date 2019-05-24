@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('baptism', 'BaptismController');
 Route::resource('carousngalry', 'CarouselnGalleryController');
 Route::resource('contactus', 'ContactUsController');
+Route::resource('churchbuidingfund', 'ChurchBuildingFundController');
 
 
 Route::get('create_gallery','CarouselnGalleryController@create_gallery')->name('create_gallery');
