@@ -14,15 +14,11 @@
                 </div>
                 <div>
                     <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
-                        <a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
-                            <i class="la la-plus m--hide"></i>
-                            <i class="la la-ellipsis-h"></i>
+                        <a href="{{ route('churchbuidingfund.index') }}" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--outline-2x m-btn--air m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+
+                            <i class="la">List</i>
                         </a>
-                        <div class="m-dropdown__wrapper">
-                            <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
 
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -94,16 +90,6 @@
                                             </div>
                                         </div>
 
-                                       {{-- <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">
-                                                Amount
-                                            </label>
-                                            <div class="col-3">
-                                                <input class="form-control m-input" type="text"  name="donation_amount" placeholder="Amount" >
-                                            </div>
-                                        </div>--}}
-
-
                                         <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
                                         <div class="form-group m-form__group row">
                                             <div class="col-10 ml-auto">
@@ -112,8 +98,6 @@
                                                 </h3>
                                             </div>
                                         </div>
-
-
 
                                         <div class="form-group m-form__group row">
                                         <label for="example-text-input" class="col-2 col-form-label">
@@ -192,11 +176,8 @@
 
                                                 </div>
 
-
-
                                             </div>
                                         </div>
-
 
 
                                         <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
@@ -235,9 +216,6 @@
                                         </div>
                                     </div>
                                 </form>
-
-
-
 
                             </div>
                             <div class="tab-pane active" id="m_user_profile_tab_2"></div>
