@@ -22,12 +22,12 @@ class ChurchBuildingFundController extends Controller
             ['data' => 'fullname','name' => 'fullname','title' => 'Name'],
             ['data' => 'pan','name' => 'pan','title' => 'PAN'],
             ['data' => 'payment_date','name' => 'payment_date','title' => 'Donation date'],
-            ['data' => 'amount','name' => 'amount','title' => 'Amount'],
+            ['data' => 'amount','name' => 'amount','title' => 'Amount(INR)'],
             ['data' => 'action','name' => 'action','title' => 'Action']
         ];
 
-
         $baptism = ChurchBuildingFund::orderBy('id','desc')->get();
+
         $baptism_count = count($baptism);
 
         if ($datatables->getRequest()->ajax()) {

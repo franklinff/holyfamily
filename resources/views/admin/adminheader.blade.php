@@ -344,13 +344,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                         </li>
-                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
+                        {{--<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
                             <a  href="#" class="m-menu__link m-menu__toggle">
                                 <i class="m-menu__link-icon flaticon-paper-plane"></i>
                                 <span class="m-menu__link-title">
 												<span class="m-menu__link-wrap">
 													<span class="m-menu__link-text">
-														Apps
+														App5656s
 													</span>
 													<span class="m-menu__link-badge">
 														<span class="m-badge m-badge--brand m-badge--wide">
@@ -468,7 +468,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li>--}}
                     </ul>
                 </div>
                 <!-- END: Horizontal Menu -->
@@ -476,13 +476,14 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-topbar__nav-wrapper">
                         <ul class="m-topbar__nav m-nav m-nav--inline">
+
                             <li class="
 	m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
                                 data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch" data-search-type="dropdown">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
-												<span class="m-nav__link-icon">
+												{{--<span class="m-nav__link-icon">
 													<i class="flaticon-search-1"></i>
-												</span>
+												</span>--}}
                                 </a>
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
