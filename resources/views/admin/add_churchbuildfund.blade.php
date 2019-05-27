@@ -4,8 +4,22 @@
 
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
+
+
         <!-- BEGIN: Subheader -->
         <div class="m-subheader ">
+
+
+
+            @if (\Session::has('success'))
+                <div class="alert alert-success">
+                    <ul>
+                        <li>{!! \Session::get('success') !!}</li>
+                    </ul>
+                </div>
+            @endif
+
+
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
                     <h3 class="m-subheader__title ">

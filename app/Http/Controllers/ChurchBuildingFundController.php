@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ChurchBuildingFund;
 use Yajra\DataTables\DataTables;
+use PDF;
 
 
 class ChurchBuildingFundController extends Controller
@@ -20,8 +21,9 @@ class ChurchBuildingFundController extends Controller
             ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr no','searchable'=>'false'],
             ['data' => 'fullname','name' => 'fullname','title' => 'Name'],
             ['data' => 'pan','name' => 'pan','title' => 'PAN'],
-            ['data' => 'payment_date','name' => 'payment_date','title' => 'Payment date'],
-            ['data' => 'amount','name' => 'amount','title' => 'Amount']
+            ['data' => 'payment_date','name' => 'payment_date','title' => 'Donation date'],
+            ['data' => 'amount','name' => 'amount','title' => 'Amount'],
+            ['data' => 'action','name' => 'action','title' => 'Action']
         ];
 
 
@@ -49,7 +51,12 @@ class ChurchBuildingFundController extends Controller
                     return '<span style="width: 133px;">'.$baptism->donation_amount.'</span>';
                 })
 
-                ->rawColumns(['sr_no','fullname','pan','payment_date','amount'])
+                ->editColumn('action', function ($baptism) {
+                    return '<div style="display: flex"><a href="'. route('churchbuidingfund.edit',$baptism->id).'" class="btn">Edit</a>
+                            <a href="'. route('churchbuidingfund.show',$baptism->id).'" target="_blank" title="View PR Number" class="btn btn-primary btn-xs btn-rounded">View</a></div>';
+                })
+
+                ->rawColumns(['sr_no','fullname','pan','payment_date','amount','action'])
                 ->make(true);
         }
 
@@ -104,7 +111,7 @@ class ChurchBuildingFundController extends Controller
           );
 
           ChurchBuildingFund::insert($form_data);
-          return redirect()->route('churchbuidingfund.create');
+          return redirect()->route('churchbuidingfund.index')->with('success',['Thank you for the donation.']);
 
       }elseif($request->mode_payment == 'cash'){
 
@@ -120,7 +127,7 @@ class ChurchBuildingFundController extends Controller
           );
 
           ChurchBuildingFund::insert($form_data);
-          return redirect()->route('churchbuidingfund.create');
+          return redirect()->route('churchbuidingfund.index')->with('success',['Thank you for the donation.']);
       }
 
     }
@@ -133,7 +140,9 @@ class ChurchBuildingFundController extends Controller
      */
     public function show($id)
     {
-        //
+        $donation_details = ChurchBuildingFund::select('*')->where('id',$id)->first();
+        $pdf = PDF::loadView('admin/pdf_donation', compact('donation_details'));
+        return $pdf->download($donation_details->donor_name.date('Y_m_d').'.pdf');
     }
 
     /**
@@ -144,7 +153,7 @@ class ChurchBuildingFundController extends Controller
      */
     public function edit($id)
     {
-        //
+       dd($id);
     }
 
     /**
