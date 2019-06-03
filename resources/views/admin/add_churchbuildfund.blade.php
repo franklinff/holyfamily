@@ -4,22 +4,8 @@
 
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
-
-
         <!-- BEGIN: Subheader -->
         <div class="m-subheader ">
-
-
-
-            @if (\Session::has('success'))
-                <div class="alert alert-success">
-                    <ul>
-                        <li>{!! \Session::get('success') !!}</li>
-                    </ul>
-                </div>
-            @endif
-
-
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
                     <h3 class="m-subheader__title ">
@@ -53,7 +39,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="m_user_profile_tab_1">
 
-                                <form class="m-form m-form--fit m-form--label-align-right" action="{{ route('churchbuidingfund.store') }}" method="POST">
+                                <form id="add_donation" class="m-form m-form--fit m-form--label-align-right" action="{{ route('churchbuidingfund.store') }}" method="POST">
                                     @csrf
                                     <div class="m-portlet__body">
 
@@ -249,6 +235,7 @@
 
 @section('js')
     <script src="{{ asset('metronic/assets/custom/bootstrap-datepicker.js') }} " type="text/javascript"></script>
+
     <script>
 
         $(function(){
@@ -279,5 +266,57 @@
 
             });
         });
+
+        $(function(){
+            $( "#add_donation" ).validate({
+                rules: {
+                    donor_name: {
+                        required: true,
+                    },
+                    donor_address: {
+                        required: true,
+                    },
+                    donation_date: {
+                        required: true,
+                    },
+                    receivername:{
+                        required: true
+                    },
+
+
+                    donation_amount_cash:{
+                        required: true
+                    },
+
+                    donation_amount_cheque:{
+                        required: true
+                    }
+                },
+                messages: {
+                    donor_name: {
+                        Please: "Please specify donor name",
+                    },
+                    donor_address: {
+                        required: "Please specify donor address",
+                    },
+                    donation_date: {
+                        required: "Please specify donation date",
+                    },
+                    receivername: {
+                        required: "Please specify receiver name.",
+                    },
+                    donation_amount_cash:{
+                        required: "Cash amount????",
+                    },
+
+                    donation_amount_cheque:{
+                        required: "Cheque amount???",
+                    }
+                }
+            });
+        });
+
+
+
     </script>
 @endsection

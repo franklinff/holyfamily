@@ -3,11 +3,18 @@
 @section('content')
 
     <div class="m-content">
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="m-subheader ">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
                     <h3 class="m-subheader__title ">
-                        List of donation
+                        Donation list
                     </h3>
                     <h3 class="m-subheader__title " style="float: right">
                         <a href="{{ route('churchbuidingfund.create')}}" class="btn btn-primary">Add Donation Name</a>
@@ -31,4 +38,12 @@
 
 @section('js')
     {!! $html->scripts() !!}
+
+    <script>
+        $(document).ready(function(){
+        setTimeout(function() {
+            $('.alert-success').fadeOut('fast');
+        }, 3000);
+        });
+    </script>
 @endsection

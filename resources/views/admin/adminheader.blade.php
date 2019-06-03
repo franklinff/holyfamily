@@ -53,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="m-stack__item m-brand  m-brand--skin-dark ">
                 <div class="m-stack m-stack--ver m-stack--general">
                     <div class="m-stack__item m-stack__item--middle m-brand__logo">
-                        <a href="../index.html" class="m-brand__logo-wrapper">
+                        <a href="{{ route('contactus.create') }}" class="m-brand__logo-wrapper">
                             <h2>Holy Family</h2>
                         </a>
                     </div>
@@ -477,13 +477,13 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="m-stack__item m-topbar__nav-wrapper">
                         <ul class="m-topbar__nav m-nav m-nav--inline">
 
-                            <li class="
+                           {{-- <li class="
 	m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light	m-list-search m-list-search--skin-light"
                                 data-dropdown-toggle="click" data-dropdown-persistent="true" id="m_quicksearch" data-search-type="dropdown">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
-												{{--<span class="m-nav__link-icon">
+												--}}{{--<span class="m-nav__link-icon">
 													<i class="flaticon-search-1"></i>
-												</span>--}}
+												</span>--}}{{--
                                 </a>
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
@@ -507,8 +507,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true">
+                            </li>--}}
+
+
+
+                           {{-- <li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true">
                                 <a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
                                     <span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger"></span>
                                     <span class="m-nav__link-icon">
@@ -639,8 +642,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="m-nav__item m-topbar__quick-actions m-topbar__quick-actions--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"  data-dropdown-toggle="click">
+                            </li>--}}
+
+
+
+
+
+                            {{--<li class="m-nav__item m-topbar__quick-actions m-topbar__quick-actions--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"  data-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
                                     <span class="m-nav__link-icon">
@@ -696,7 +704,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li>--}}
                             <li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" data-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-topbar__userpic">
@@ -718,8 +726,8 @@ License: You must have a valid license purchased only from themeforest(the above
 																<span class="m-card-user__name m--font-weight-500">
 																	Mark Andre
 																</span>
-                                                    <a href="" class="m-card-user__email m--font-weight-300 m-link">
-                                                        mark.andre@gmail.com
+                                                    <a>
+                                                         {{ \Illuminate\Support\Facades\Auth::user()->name }}
                                                     </a>
                                                 </div>
                                             </div>
@@ -740,11 +748,6 @@ License: You must have a valid license purchased only from themeforest(the above
 																				<span class="m-nav__link-text">
 																					My Profile
 																				</span>
-																				<span class="m-nav__link-badge">
-																					<span class="m-badge m-badge--success">
-																						2
-																					</span>
-																				</span>
 																			</span>
 																		</span>
                                                         </a>
@@ -757,34 +760,11 @@ License: You must have a valid license purchased only from themeforest(the above
 																		</span>
                                                         </a>
                                                     </li>
-                                                    <li class="m-nav__item">
-                                                        <a href="../header/profile.html" class="m-nav__link">
-                                                            <i class="m-nav__link-icon flaticon-chat-1"></i>
-                                                            <span class="m-nav__link-text">
-																			Messages
-																		</span>
-                                                        </a>
-                                                    </li>
+
+
                                                     <li class="m-nav__separator m-nav__separator--fit"></li>
                                                     <li class="m-nav__item">
-                                                        <a href="../header/profile.html" class="m-nav__link">
-                                                            <i class="m-nav__link-icon flaticon-info"></i>
-                                                            <span class="m-nav__link-text">
-																			FAQ
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="m-nav__item">
-                                                        <a href="../header/profile.html" class="m-nav__link">
-                                                            <i class="m-nav__link-icon flaticon-lifebuoy"></i>
-                                                            <span class="m-nav__link-text">
-																			Support
-																		</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="m-nav__separator m-nav__separator--fit"></li>
-                                                    <li class="m-nav__item">
-                                                        <a href="../snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
+                                                        <a href="{{ route('logout') }}"   class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">
                                                             Logout
                                                         </a>
                                                     </li>
@@ -794,13 +774,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                             </li>
-                            <li id="m_quick_sidebar_toggle" class="m-nav__item">
+                            {{--<li id="m_quick_sidebar_toggle" class="m-nav__item">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
 												<span class="m-nav__link-icon">
 													<i class="flaticon-grid-menu"></i>
 												</span>
                                 </a>
-                            </li>
+                            </li>--}}
                         </ul>
                     </div>
                 </div>

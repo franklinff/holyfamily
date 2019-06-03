@@ -44,8 +44,11 @@
                 <i class="m-menu__section-icon flaticon-more-v3"></i>
             </li>
 
+
+         @if(in_array('baptism.index',Session::get('permission')))
              <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
-                  <a  href="{{ route('baptism.index')}}" class="m-menu__link m-menu__toggle">
+
+                 <a  href="{{ route('baptism.index')}}" class="m-menu__link m-menu__toggle">
                       <i class="m-menu__link-icon flaticon-layers"></i>
                       <span class="m-menu__link-text">
                                   Baptism
@@ -85,8 +88,13 @@
                           </li>
                       </ul>
                   </div>
-              </li>
 
+              </li>
+          @endif
+
+
+
+            @if(in_array('churchbuidingfund.index',Session::get('permission')))
             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
                 <a  href="{{ route('churchbuidingfund.index') }}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
@@ -124,8 +132,11 @@
                     </ul>
                 </div>
             </li>
+            @endif
 
 
+
+            @if(in_array('carousngalry.index',Session::get('permission')))
             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
                 <a  href="#" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-icon flaticon-interface-7"></i>
@@ -227,8 +238,11 @@
                     </ul>
                 </div>
             </li>
+            @endif
 
 
+
+            @if(in_array('contactus.index',Session::get('permission')))
             <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true"  data-menu-submenu-toggle="hover">
                 <a  href="{{ route('contactus.create') }}" class="m-menu__link m-menu__toggle">
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot">
@@ -240,6 +254,7 @@
                     <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
             </li>
+            @endif
 
 
 
