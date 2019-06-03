@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Roles;
 
 class HomeController extends Controller
 {
@@ -11,10 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -23,6 +21,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        dd('HomeController');
+
+        $role = Auth::user();
+        $role_details = Roles::where('id', $role->role_id)->first();
+        $role_name = $role_details->name;
+
+        // Check user role
+        switch ($role_name) {
+            case 'Parish Priest':
+                return redirect()->route('baptism.index');
+                break;
+            case 'Church Employee':
+                return redirect()->route('churchbuidingfund.index');
+                break;
+            case 'Parish council':
+                return redirect()->route('churchbuidingfund.index');
+                break;
+            default:
+                return '/login';
+                break;
+        }
+
+//        return view('home');
     }
 }
