@@ -21,8 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd('HomeController');
-
         $role = Auth::user();
         $role_details = Roles::where('id', $role->role_id)->first();
         $role_name = $role_details->name;
