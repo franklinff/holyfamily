@@ -7,7 +7,7 @@ use App\ChurchBuildingFund;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use PDF;
-
+//use Illuminate\Support\Facades\Session;
 
 class ChurchBuildingFundController extends Controller
 {
@@ -18,7 +18,8 @@ class ChurchBuildingFundController extends Controller
      */
     public function index(DataTables $datatables)
     {
-       // dd(Auth::user()->name);
+/*        dd(Session::all());
+        dd(Auth::user()->name);*/
         $columns = [
             ['data' => 'sr_no','name' => 'sr_no','title' => 'Sr no','searchable'=>'false'],
             ['data' => 'fullname','name' => 'fullname','title' => 'Name'],
@@ -188,8 +189,6 @@ class ChurchBuildingFundController extends Controller
     {
 
     }
-
-
 
 
 }

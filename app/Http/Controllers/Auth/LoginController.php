@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Roles;
 use Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -63,6 +64,7 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
+        Session::flush();
         return redirect('/login');
     }
 }
