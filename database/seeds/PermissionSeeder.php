@@ -12,12 +12,8 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-
         $permissions=[];
         $routes =  Route::getRoutes()->get();
-
-
-
 
         foreach($routes as $route)
         {
