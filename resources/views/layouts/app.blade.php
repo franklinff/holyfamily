@@ -81,6 +81,5 @@
     </div>
 </body>
 </html>
-
-
 @section('js')
+@yield('js')

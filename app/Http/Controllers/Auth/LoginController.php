@@ -8,6 +8,7 @@ use App\Roles;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -49,11 +50,10 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
             $role = Auth::user();
             $role_details = Roles::where('id', $role->role_id)->first();
             $role_name = $role_details->name;
-           // if (Auth::check()) {
+
                 // Check user role
                 switch ($role_name) {
                     case 'Parish Priest':
@@ -68,13 +68,10 @@ class LoginController extends Controller
                     default:
                         return redirect()->route('login');
                         break;
-            //    }
             }
-
         }else{
-            return redirect()->back();
+            return Redirect::back()->withErrors(['Invalid credentials']);
         }
-
     }
 
     public function logout(){

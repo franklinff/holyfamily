@@ -10,10 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::post('/loginuser', 'Auth\LoginController@redirectTo')->name('loginuser');
+Route::group(['middleware' => 'revalidate'], function() {
+    Auth::routes();
+    Route::get('/loginuser', 'Auth\LoginController@redirectTo')->name('loginuser');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+/*     Route::get('/home', 'HomeController@index')->name('home');*/
+});
 
 Route::get('captcha', function() {
     Captcha::create(\Illuminate\Support\Facades\Input::has('id')?\Illuminate\Support\Facades\Input::get('id'):null);
@@ -36,8 +38,3 @@ Route::group(['middleware' => ['auth','checkrole']], function () {
     Route::get('ajxupdateStatus','CarouselnGalleryController@updateStatus')->name('ajxupdateStatus');
     Route::get('deletecoroselimg/{id}','CarouselnGalleryController@deleteCoroselimg')->name('deletecoroselimg');
 });
-
-Auth::routes();
-//Auth::routes(['register' => false]);
-
-

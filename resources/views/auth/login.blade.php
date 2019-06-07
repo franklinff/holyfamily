@@ -8,9 +8,16 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('loginuser') }}">
-                        @csrf
 
+                    @if($errors->any())
+                        <div id="error_msg" class="alert alert-dismissable alert-danger">
+                        <h4>{{$errors->first()}}</h4>
+                        </div>
+                    @endif
+
+
+                    <form method="get" action="{{ route('loginuser') }}">
+                        @csrf
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -93,6 +100,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script src="{{ asset('js/jquery-3.3.1.min.js')  }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $('#error_msg').fadeIn().delay(1300).fadeOut();
+            $('.captcha-input-error').fadeIn().delay(1300).fadeOut();
+        });
+    </script>
 @endsection
 
 
