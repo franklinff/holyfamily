@@ -1,0 +1,66 @@
+.captcha-wrapper {
+    display: inline-block;
+    border: 1px solid #9d9d9d;
+    border-right-color: transparent;
+    -webkit-border-top-left-radius: 40px;
+    border-top-left-radius: 40px;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -webkit-border-bottom-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    overflow: hidden;
+    width: 20%;
+
+}
+
+#captcha,
+#capture_text {
+    width: 50%;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 40px;
+    border-top-right-radius: 40px;
+    -webkit-border-bottom-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    -webkit-border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#captcha_img {
+    width: 100%;
+    height: 100%;
+}
+
+.captcha-input-wrap {
+    position: relative;
+}
+
+#captcha-error,
+.captcha-input-error {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+}
+
+.fa.fa-refresh{
+    margin-top: 16px;
+    width: 30px;
+}
+
+.m-login__signin--box .fa-refresh {
+    position: absolute;
+    top: 50%;
+    right: 102%;
+    transform: translateY(-50%);
+}
+
+.m-login__signin--box .fa-refresh {
+    position: absolute;
+    top: 50%;
+    right: 102%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

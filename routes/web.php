@@ -13,14 +13,17 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/loginuser', 'Auth\LoginController@redirectTo')->name('loginuser');
 
+Route::get('captcha', function() {
+    Captcha::create(\Illuminate\Support\Facades\Input::has('id')?\Illuminate\Support\Facades\Input::get('id'):null);
+});
 
 Route::group(['middleware' => ['auth','checkrole']], function () {
 
-
     Route::get('/', function () {
-        //return view('welcome');
         return view('admin/baptismform');
+        //return view('welcome');
     });
 
     Route::resource('churchbuidingfund', 'ChurchBuildingFundController');
@@ -35,5 +38,6 @@ Route::group(['middleware' => ['auth','checkrole']], function () {
 });
 
 Auth::routes();
+//Auth::routes(['register' => false]);
 
 

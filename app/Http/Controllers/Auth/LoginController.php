@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Roles;
 use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -40,31 +41,45 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectTo(){
-        $role = Auth::user();
-        $role_details = Roles::where('id', $role->role_id)->first();
-        $role_name = $role_details->name;
+    public function redirectTo(Request $request){
 
-        // Check user role
-        switch ($role_name) {
-            case 'Parish Priest':
-                return '/baptism';
-                break;
-            case 'Church Employee':
-                return '/churchbuidingfund';
-                break;
-            case 'Parish council':
-                return '/churchbuidingfund';
-                break;
-            default:
-                return '/login';
-                break;
+        $validateData = $request->validate([
+            'captcha' => 'required|captcha',
+        ]);
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+
+            $role = Auth::user();
+            $role_details = Roles::where('id', $role->role_id)->first();
+            $role_name = $role_details->name;
+           // if (Auth::check()) {
+                // Check user role
+                switch ($role_name) {
+                    case 'Parish Priest':
+                        return  redirect()->route('baptism.index');
+                        break;
+                    case 'Church Employee':
+                        return redirect()->route('churchbuidingfund.index');
+                        break;
+                    case 'Parish council':
+                        return redirect()->route('churchbuidingfund.index');
+                        break;
+                    default:
+                        return redirect()->route('login');
+                        break;
+            //    }
+            }
+
+        }else{
+            return redirect()->back();
         }
+
     }
 
     public function logout(){
-        Auth::logout();
         Session::flush();
+        Auth::logout();
         return redirect('/login');
     }
 }

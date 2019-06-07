@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('loginuser') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -38,6 +38,29 @@
                                 @enderror
                             </div>
                         </div>
+
+
+
+                        <div class="form-group m-form__group" style="margin-top: 16px;">
+                            <div class="d-flex justify-content-between">
+
+                                <i onclick="document.getElementById('captcha_img').src='{{ URL::to('captcha') }}'; return false"
+                                   title="Recapture" aria-hidden="true" style="font-size: 24px;cursor: pointer;">
+                                    <img style="width: 25px;height: 25px" src= {{ URL::to('refresh.png')}}>
+                                </i>
+
+
+                                <span class="captcha-wrapper" style="margin-left: -50px"> <img id="captcha_img" src="{{ URL::to('captcha') }}"></span>
+                                <input type="text" id="captcha" class="form-control" name="captcha" placeholder="Captcha" style="width:200px;">
+
+                                @if($errors->has('captcha'))
+                                    <span class="help-block captcha-input-error" style="color: red;">
+                                        Invalid Captcha
+                                    </span>
+                            </div>
+                            @endif
+                        </div>
+
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -71,3 +94,5 @@
     </div>
 </div>
 @endsection
+
+
