@@ -39,75 +39,97 @@ class BirthdaySms extends Command
      */
     public function handle()
     {
-        $todays_bithday = Baptism::select('newborn_firstname','newborn_middlename','newborn_surname','contact_number','gfather_contact_no','gmother_contact_no','baptism_church')
+       $todays_bithday = Baptism::select('newborn_firstname','newborn_middlename','newborn_surname','contact_number','gfather_contact_no','gmother_contact_no','baptism_church','gender')
                                     ->where('birth_date', 'like', '%' .Carbon::now()->format('m-d') . '%')
                                     ->get()->toArray();
 
         foreach ($todays_bithday as $value){
+
             $fullname =  $value['newborn_firstname'].' '.$value['newborn_middlename'].' '.$value['newborn_surname'];
 
-            if($value['gender' == 'male']){
+            if($value['gender'] == 'male'){
                 $gender = 'him';
-            }elseif($value['gender' == 'female']){
+            }elseif($value['gender'] == 'female'){
                 $gender = 'her';
             }
+
+            $self_msg = 'Hello'.' '.$fullname.' '.',have a wonderful birthday. We wish your every day to be filled with lots of love, laughter and happiness.';
+            $god_father_msg = 'Its'.' '.$fullname.' '.'birthday.Give good wishes.';
+            $god_mother_msg = 'Its'.' '.$fullname.' '.'birthday.Give greetings.';
 
             $self_contact_number =  $value['contact_number'];
             $gfather_contact_no =  $value['gfather_contact_no'];
             $gmother_contact_no =  $value['gmother_contact_no'];
 
-            $self_msg = 'Hello'.' '.$fullname.' '.'Have a wonderful birthday. We wish your every day to be filled with lots of love, laughter and happiness.';
-            $god_parents_msg = 'Its your Godchild birthday today.Bless'.$gender.'with good wishes.';
-
-        }
-
-    }
-
- /* public function handle()
-    {
-        // Your PHP installation needs cUrl support, which not all PHP installations
-        // include by default.
-        // To run under docker:
-        // docker run -v $PWD:/code php:7.3.2-alpine php /code/code_sample.php
-
-        $username = 'franklinfargoj';
-        $password = 'franklinfargoj123';
-        $messages = array(
-           // array('to'=>'+919561459348', 'body'=>'Hello Airtel!'),
-            array('to'=>'919561459348', 'body'=>'Hello Franklin')
-        );
-
-        $result = $this->send_message( json_encode($messages), 'https://api.bulksms.com/v1/messages', $username, $password );
-
-        if ($result['http_status'] != 201) {
-            print "Error sending: " . ($result['error'] ? $result['error'] : "HTTP status ".$result['http_status']."; Response was " .$result['server_response']);
-        } else {
-            print "Response " . $result['server_response'];
-            // Use json_decode($result['server_response']) to work with the response further
+            $this->send_message($self_contact_number,$self_msg);
+            $this->send_message($gfather_contact_no,$god_father_msg);
+            $this->send_message($gmother_contact_no,$god_mother_msg);
         }
     }
 
-    function send_message ( $post_body, $url, $username, $password) {
-        $ch = curl_init( );
-        $headers = array(
-            'Content-Type:application/json',
-            'Authorization:Basic '. base64_encode("$username:$password")
+
+    //https://docs.msg91.com/
+    function send_message ($phone_number,$message){
+
+        //Your authentication key
+        $authKey = "280644A5qrvU3Z5d009087";
+
+        //Multiple mobiles numbers separated by comma
+        $mobileNumber = $phone_number;
+
+        //Sender ID,While using route4 sender id should be 6 characters long.
+        //$senderId = "102234";
+        $senderId = "HFCSMS";
+
+        //Your message to send, Add URL encoding here.
+        //$message = urlencode(".'$message'.");
+        $message = urlencode($message);
+
+        //Define route
+        $route = 4;
+
+        //Prepare you post parameters
+        $postData = array(
+            'authkey' => $authKey,
+            'mobiles' => $mobileNumber,
+            'message' => $message,
+            'sender' => $senderId,
+            'route' => $route
         );
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt ( $ch, CURLOPT_URL, $url );
-        curl_setopt ( $ch, CURLOPT_POST, 1 );
-        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $post_body );
-        // Allow cUrl functions 20 seconds to execute
-        curl_setopt ( $ch, CURLOPT_TIMEOUT, 20 );
-        // Wait 10 seconds while trying to connect
-        curl_setopt ( $ch, CURLOPT_CONNECTTIMEOUT, 10 );
-        $output = array();
-        $output['server_response'] = curl_exec( $ch );
-        $curl_info = curl_getinfo( $ch );
-        $output['http_status'] = $curl_info[ 'http_code' ];
-        $output['error'] = curl_error($ch);
-        curl_close( $ch );
-        return $output;
-    }*/
+
+        //API URL
+        $url="http://api.msg91.com/api/sendhttp.php";
+
+        // init the resource
+        $ch = curl_init();
+        curl_setopt_array($ch, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => $postData
+            //,CURLOPT_FOLLOWLOCATION => true
+        ));
+
+        //Ignore SSL certificate verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+        //get response
+        $output = curl_exec($ch);
+
+        //Print error if any
+        if(curl_errno($ch))
+        {
+            echo 'error:' . curl_error($ch);
+        }
+
+        curl_close($ch);
+
+        echo $output.PHP_EOL;
+
+    }
+
 }
+
+
+

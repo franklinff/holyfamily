@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'revalidate'], function() {
+Route::group(['middleware' => ['revalidate']], function() {
     Auth::routes();
     Route::get('/loginuser', 'Auth\LoginController@redirectTo')->name('loginuser');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-/*     Route::get('/home', 'HomeController@index')->name('home');*/
 });
 
 Route::get('captcha', function() {
