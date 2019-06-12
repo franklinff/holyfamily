@@ -24,7 +24,7 @@
                         <div class="m-dropdown__body">
                             <div class="m-dropdown__content">
                                 <ul class="m-nav">
-                                    <li class="m-nav__section m-nav__section--first m--hide">
+                                    {{--<li class="m-nav__section m-nav__section--first m--hide">
 															<span class="m-nav__section-text">
 																Quick Actions
 															</span>
@@ -33,7 +33,7 @@
                                         <a href="" class="m-nav__link">
                                             <i class="m-nav__link-icon flaticon-share"></i>
                                             <span class="m-nav__link-text">
-																	Activity
+																	Baptism listing
 																</span>
                                         </a>
                                     </li>
@@ -52,21 +52,21 @@
 																	FAQ
 																</span>
                                         </a>
-                                    </li>
+                                    </li>--}}
                                     <li class="m-nav__item">
-                                        <a href="" class="m-nav__link">
+                                        <a href="{{ route('baptism.index') }}" class="m-nav__link">
                                             <i class="m-nav__link-icon flaticon-lifebuoy"></i>
                                             <span class="m-nav__link-text">
-																	Support
+																	Baptism listing
 																</span>
                                         </a>
                                     </li>
-                                    <li class="m-nav__separator m-nav__separator--fit"></li>
+                                    {{--<li class="m-nav__separator m-nav__separator--fit"></li>
                                     <li class="m-nav__item">
                                         <a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">
                                             Submit
                                         </a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
                             </div>
                         </div>
@@ -250,22 +250,22 @@
                                         <li class="nav-item m-tabs__item">
                                             <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
                                                 <i class="flaticon-share m--hide"></i>
-                                                Update Profile
+                                                Profile
                                             </a>
                                         </li>
-                                        <li class="nav-item m-tabs__item">
+                                       {{-- <li class="nav-item m-tabs__item">
                                             <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
-                                                Messages
+                                                Messages77
                                             </a>
                                         </li>
                                         <li class="nav-item m-tabs__item">
                                             <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
                                                 Settings
                                             </a>
-                                        </li>
+                                        </li>--}}
                                     </ul>
                                 </div>
-                                <div class="m-portlet__head-tools">
+                               {{-- <div class="m-portlet__head-tools">
                                     <ul class="m-portlet__nav">
                                         <li class="m-portlet__nav-item m-portlet__nav-item--last">
                                             <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
@@ -342,14 +342,14 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>--}}
                             </div>
 
 
                             <div class="tab-content">
                                 <div class="tab-pane active" id="m_user_profile_tab_1">
 
-                                    <form class="m-form m-form--fit m-form--label-align-right" action="{{ route('baptism.store') }}" method="POST">
+                                    <form id="add_baptism" class="m-form m-form--fit m-form--label-align-right" action="{{ route('baptism.store') }}" method="POST">
                                         @csrf
                                         <div class="m-portlet__body">
                                             <div class="form-group m-form__group m--margin-top-10 m--hide">
@@ -510,7 +510,7 @@
                                             </div>
 
                                             <div class="form-group m-form__group row">
-                                                <label for="example-text-input" class="col-2 col-form-label">Conatct number</label>
+                                                <label for="example-text-input" class="col-2 col-form-label">Contact number</label>
                                                 @if($errors->has('birth_date'))
                                                     <span style="color:red">{{ $errors->first('birth_date') }} </span>
                                                 @endif
@@ -614,17 +614,26 @@
                                                 </div>
                                             </div>
 
+                                            <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
 
-                                            <div class="col-7">
-                                                <input  type="text" name="pastor" value="Fr.Alex" class="form-control m-input">
-                                            </div>
-                                            <div class="col-7">
-                                                <input  type="text" name="baptism_church" value="Holy family church" class="form-control m-input">
+
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-2 col-form-label" >Parish Priest</label>
+                                                <div class="col-10">
+                                                    <input  type="text" name="pastor" value="Fr.Alex" class="form-control m-input">
+                                                </div>
+
+                                                <label class="col-2 col-form-label">Baptism church</label>
+                                                <div class="col-10">
+                                                    <input  type="text" name="baptism_church" value="Holy family church" class="form-control m-input">
+                                                </div>
+
+                                                <label class="col-2 col-form-label">Remark</label>
+                                                <div class="col-10">
+                                                    <input  type="text" name="remark" value="testing" class="form-control m-input">
+                                                </div>
                                             </div>
 
-                                            <div class="col-7">
-                                                <input  type="text" name="remark" value="testing" class="form-control m-input">
-                                            </div>
                                         </div>
                                         <div class="m-portlet__foot m-portlet__foot--fit">
                                             <div class="m-form__actions">
@@ -663,7 +672,8 @@
 
 
 @section('js')
-    <script src="{{ asset('metronic/assets/custom/bootstrap-datepicker.js') }} " type="text/javascript"></script>
+    <script src="{{ asset('metronic/assets/custom/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.validate.js') }} " type="text/javascript"></script>
 
     <script>
     $(function(){
@@ -675,6 +685,185 @@
         });
         $("#baptism_date").rules('add', { greaterThan: "#birth_date" });
     });
+
+
+    $(function () {
+        $('#add_baptism').validate({
+            rules: {
+                newborn_firstname: {
+                    required: true,
+                },
+                newborn_middlename: {
+                    required: true,
+                },
+                newborn_surname: {
+                    required: true,
+                },
+                gender: {
+                    required: true,
+                },
+                adopted: {
+                    required: true,
+                },
+                birth_date: {
+                    required: true,
+                },
+                baptism_date: {
+                    required: true,
+                },
+                birthplace: {
+                    required: true,
+                },
+
+                father_first_name: {
+                    required: true,
+                },
+                father_middle_name: {
+                    required: true,
+                },
+                father_last_name: {
+                    required: true,
+                },
+                mother_first_name: {
+                    required: true,
+                },
+                mother_middle_name: {
+                    required: true,
+                },
+                mother_last_name: {
+                    required: true,
+                },
+                guardian_resident_adrs: {
+                    required: true,
+                },
+                contact_number: {
+                    required: true,
+                },
+
+
+                gmother_first_name: {
+                    required: true,
+                },
+                gmother_middle_name: {
+                    required: true,
+                },
+                gmother_last_name: {
+                    required: true,
+                },
+                gmother_contact_no: {
+                    required: true,
+                },
+                gmother_adrs: {
+                    required: true,
+                },
+
+
+                gfather_first_name: {
+                    required: true,
+                },
+                gfather_middle_name: {
+                    required: true,
+                },
+                gfather_last_name: {
+                    required: true,
+                },
+                gfather_adrs: {
+                    required: true,
+                },
+                gfather_contact_no: {
+                    required: true,
+                },
+
+
+            },
+            messages: {
+                newborn_firstname: {
+                    required: "Field required"
+                },
+                newborn_middlename: {
+                    required: "Field required"
+                },
+                newborn_surname: {
+                    required: "Field required"
+                },
+                gender: {
+                    required: "Field required"
+                },
+                adopted: {
+                    required:"Field required"
+                },
+                birth_date: {
+                    required: "Field required"
+                },
+                baptism_date: {
+                    required: "Field required"
+                },
+                birthplace: {
+                    required: "Field required"
+                },
+                father_first_name: {
+                    required: "Field required"
+                },
+                father_middle_name: {
+                    required: "Field required"
+                },
+                father_last_name: {
+                    required: "Field required"
+                },
+                mother_first_name: {
+                    required: "Field required"
+                },
+                mother_middle_name: {
+                    required: "Field required"
+                },
+                mother_last_name: {
+                    required: "Field required"
+                },
+                guardian_resident_adrs: {
+                    required: "Field required"
+                },
+                contact_number: {
+                    required: "Field required"
+                },
+
+
+                gmother_first_name: {
+                    required: "Field required"
+                },
+                gmother_middle_name: {
+                    required: "Field required"
+                },
+                gmother_last_name: {
+                    required: "Field required"
+                },
+                gmother_contact_no: {
+                    required: "Field required"
+                },
+                gmother_adrs: {
+                    required: "Field required"
+                },
+
+                gfather_first_name: {
+                    required: "Field required"
+                },
+                gfather_middle_name: {
+                    required: "Field required"
+                },
+                gfather_last_name: {
+                    required: "Field required"
+                },
+                gfather_adrs: {
+                    required: "Field required"
+                },
+                gfather_contact_no: {
+                    required: "Field required"
+                },
+
+
+            }
+        });
+    });
+
     </script>
 
 @endsection
