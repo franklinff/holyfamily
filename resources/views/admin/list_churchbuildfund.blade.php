@@ -10,18 +10,24 @@
             </div>
         @endif
 
-        <div class="m-subheader ">
+
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="m-subheader__title ">
+                    <h3 class="m-subheader__title  m-subheader__title--separator">
                         Donation list
                     </h3>
-                    <h3 class="m-subheader__title " style="float: right">
-                        <a href="{{ route('churchbuidingfund.create')}}" class="btn btn-primary">Add Donation Name</a>
-                    </h3>
+                </div>
+
+                <div class="m-portlet__head-caption" style="margin-right: 150px;">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text" >
+                            <a href="{{ route('churchbuidingfund.create') }}" class="btn btn-primary">Add Donation Name</a>
+                        </h3>
+                    </div>
                 </div>
             </div>
-        </div>
+
+
 
         <!--Begin::Main Portlet-->
         <div class="m-portlet m-portlet--compact">
