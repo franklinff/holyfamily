@@ -53,10 +53,9 @@
 
                                             <li class="m-nav__item">
                                                 <a href="{{ route('carousngalry.index') }}" class="m-nav__link">
-                                                    <i class="m-nav__link-icon flaticon-share"></i>
                                                     <span class="m-nav__link-text">
-																	List carousel images
-																</span>
+                                                        List carousel images
+													</span>
                                                 </a>
                                             </li>
 
