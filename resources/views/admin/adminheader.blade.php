@@ -90,7 +90,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </button>
                 <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark "  >
                     <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
+                        {{--<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
                             <a  href="#" class="m-menu__link m-menu__toggle">
                                 <i class="m-menu__link-icon flaticon-add"></i>
                                 <span class="m-menu__link-text">
@@ -205,8 +205,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
+                        </li>--}}
+                       {{-- <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
                             <a  href="#" class="m-menu__link m-menu__toggle">
                                 <i class="m-menu__link-icon flaticon-line-graph"></i>
                                 <span class="m-menu__link-text">
@@ -343,7 +343,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </ul>
                                 </div>
                             </div>
-                        </li>
+                        </li>--}}
                         {{--<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"  data-menu-submenu-toggle="click" data-redirect="true" aria-haspopup="true">
                             <a  href="#" class="m-menu__link m-menu__toggle">
                                 <i class="m-menu__link-icon flaticon-paper-plane"></i>
@@ -735,7 +735,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <div class="m-dropdown__body">
                                             <div class="m-dropdown__content">
                                                 <ul class="m-nav m-nav--skin-light">
-                                                    <li class="m-nav__section m--hide">
+                                                    {{--<li class="m-nav__section m--hide">
 																	<span class="m-nav__section-text">
 																		Section
 																	</span>
@@ -751,15 +751,15 @@ License: You must have a valid license purchased only from themeforest(the above
 																			</span>
 																		</span>
                                                         </a>
-                                                    </li>
-                                                    <li class="m-nav__item">
+                                                    </li>--}}
+                                                    {{--<li class="m-nav__item">
                                                         <a href="../header/profile.html" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-share"></i>
                                                             <span class="m-nav__link-text">
 																			Activity
 																		</span>
                                                         </a>
-                                                    </li>
+                                                    </li>--}}
 
 
                                                     <li class="m-nav__separator m-nav__separator--fit"></li>
