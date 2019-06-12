@@ -43,6 +43,7 @@ class BirthdaySms extends Command
                                     ->where('birth_date', 'like', '%' .Carbon::now()->format('m-d') . '%')
                                     ->get()->toArray();
 
+       if(!empty($todays_bithday)){
         foreach ($todays_bithday as $value){
 
             $fullname =  $value['newborn_firstname'].' '.$value['newborn_middlename'].' '.$value['newborn_surname'];
@@ -65,6 +66,9 @@ class BirthdaySms extends Command
             $this->send_message($gfather_contact_no,$god_father_msg);
             $this->send_message($gmother_contact_no,$god_mother_msg);
         }
+       }else{
+          echo "No birthday today".PHP_EOL;
+       }
     }
 
 
